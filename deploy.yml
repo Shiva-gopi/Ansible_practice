@@ -1,0 +1,19 @@
+---
+- hosts: all
+  user: root
+  become: yes
+  tasks:
+    - name: httpd installation
+      yum:
+        name: httpd
+        state: present
+    - name: start httpd
+      service:
+        name: httpd
+        state: restarted
+      notify: deploy index.html
+  handlers:     
+    - name: deploy index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/    

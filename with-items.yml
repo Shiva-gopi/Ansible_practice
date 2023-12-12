@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: with items file creation
+      group:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - group1
+        - group2
+    - name: assign user to a group
+      user:
+        name: "{{ item.name}}"
+        groups: "{{ item.groups }}"
+        state: present
+      with_items:
+        - { name: test1, groups: group1 }
+        - { name: test2, groups: group2 }    

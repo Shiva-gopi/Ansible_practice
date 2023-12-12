@@ -1,0 +1,16 @@
+---
+- hosts: dev
+  become: yes
+  tasks:
+    - name: install maven
+      yum:
+        name: maven
+        state: present
+
+- hosts: test
+  become: yes
+  tasks:
+    - name: install git
+      yum:
+        name: git
+        state: present          

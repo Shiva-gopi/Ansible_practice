@@ -1,0 +1,10 @@
+---
+- hosts: all
+  user: root
+  become: yes
+  tasks:
+    - name: file creation
+      file:
+        path: /root/text
+        mode: 0777
+        state: directory

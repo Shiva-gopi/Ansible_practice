@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: root
+  become: yes
+  tasks:
+    - name: copy files
+      copy:
+        content: hi hello namasthey
+        dest: /root/shiva.txt

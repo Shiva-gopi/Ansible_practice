@@ -1,0 +1,14 @@
+---
+- hosts: all
+  user: root
+  become: yes
+  vars:
+    a:
+      - git
+      - maven
+      - docker
+  tasks:
+    - name: package installation
+      yum:
+        name: "{{a}}"
+        state: present
